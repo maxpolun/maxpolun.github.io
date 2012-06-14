@@ -1,3 +1,13 @@
 ---
 layout: base
 ---
+{%for post in posts%}
+<article>
+	<header>
+		<h1>{{post.title}}</h1>
+	</header>
+	<section>
+		{{ post.content  }}
+	</section>
+</article>
+{%%}
