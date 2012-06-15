@@ -199,6 +199,7 @@ nav.pagination {
 }
 .categories ul {
 	display: inline;
+	list-style-type:none;
 }
 .categories li, .categories a{
 	float:left;
