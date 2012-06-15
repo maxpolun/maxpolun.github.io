@@ -84,14 +84,14 @@ body{ font:16px/26px Helvetica, Helvetica Neue, Arial; }
     ALL: Gray Theme
    =================== */
 
-#header-container{ border-bottom: 20px solid #dfdfdf; }
-#footer-container{ border-top:    20px solid #dfdfdf; }
-#main aside      { border-top:    20px solid #dfdfdf; }
+#header-container{ border-bottom: 20px solid rgba(223, 223, 223, .25); }
+#footer-container{ border-top:    20px solid rgba(223, 223, 223, .25); }
+#main aside      { border-top:    20px solid rgba(223, 223, 223, .25); }
 
 #header-container,
 #footer-container,
 #main aside{
-	background:#ddd;
+	background:#ddd url(/img/hexellence.png);
 }
 
 #title{ color:black; }
@@ -106,7 +106,7 @@ nav a{
 	margin-bottom:5px;
 	padding:15px 0;
 
-	background:#222222;
+	background:#222222 url(/img/txture.png);
 	color:white;
 
 	text-align:center;
