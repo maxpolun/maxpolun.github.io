@@ -162,6 +162,21 @@ nav a:hover{
 #title {
 	font-size: 250%;
 }
+/* pagination links */
+nav.pagination {
+	text-align: center;
+	float:none;
+	height:24px;
+}
+.next {
+	padding:0 10px 0 10px;
+}
+.previous {
+	padding:0 10px 0 10px;
+}
+.pagination .inactive {
+	color:#dddddd;
+}
 
 
 /* ==========================================================================
@@ -171,10 +186,12 @@ nav a:hover{
 .categories{
 	margin:0;
 	padding:0;
-	position:relative;
+	/*position:relative;*/
 	left:24px;
 	bottom:-12px;
 	list-style:none;
+	display:block;
+	height:24px;
 }
 .category-heading {
 	display: inline;

@@ -21,3 +21,17 @@ layout: base
 	{% endif %}
 </article>
 {%endfor%}
+<!-- Pagination links -->
+<nav class="pagination">
+  {% if paginator.previous_page %}
+    <a href="/page{{paginator.previous_page}}" class="previous active">Newer Posts</a>
+  {% else %}
+    <span class="previous inactive">Newer Posts</span>
+  {% endif %}
+  <span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
+  {% if paginator.next_page %}
+    <a href="/page{{paginator.next_page}}" class="next active">Older posts</a>
+  {% else %}
+    <span class="next inactive">Older Posts</span>
+  {% endif %}
+</nav>
