@@ -6,4 +6,4 @@ category: site-matters
 ---
 I've set up disqus -- comments are now allowed.
 
-Next ont he list is setting up a resume page and an about page.
+Next on the list is setting up a resume page and an about page.
