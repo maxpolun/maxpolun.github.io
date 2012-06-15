@@ -73,7 +73,7 @@ td { vertical-align: top; }
    Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
    ========================================================================== */
 
-body{ font:16px/26px Helvetica, Helvetica Neue, Arial; }
+body{ font:16px/26px 'Ubuntu Condensed', Helvetica, Helvetica Neue, Arial; }
 
 .wrapper{
 	width:90%;
@@ -159,6 +159,10 @@ nav a:hover{
 #main-container {
 	background-image: url(/img/clean_textile.png);
 }
+#title {
+	font-size: 250%;
+}
+
 
 /* ==========================================================================
    Pure CSS tags (categories in this case)
