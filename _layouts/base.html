@@ -13,16 +13,16 @@
 
 	<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-	<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+	<script src="/js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
 
 	<div id="header-container">
 		<header class="wrapper clearfix">
-			<h1 id="title">Max Polun</h1>
+			<a href="/"><h1 id="title">Max Polun</h1></a>
 			<nav>
 				<ul>
 					<li><a href="/posts/">Blog</a></li>
@@ -38,10 +38,15 @@
 			<aside>
 				<!--Place the code below where you want the widget to render-->
 				<div id="gpluswidget" data-id="112956007143162083092" data-key="AIzaSyDMrAibt5979Zl-88XGUk10rZEJExMMfNQ" data-posts="" data-lang="yes" data-width="290" data-bkg="transparent" data-padding="10" data-border="f5f5f5" data-radius="0" data-txt="0c0c0c" data-link="36c" data-favicon="yes" data-header="yes" data-footer="yes" data-page="no"></div>
-				<script type="text/javascript" src="http://gplusapi.googlecode.com/files/widget0.js"></script>
+
+				{% if site.related_posts %}
+					<ul>
+						{% for post in site.related_posts %}
+							<li><a href="{{post.url}}">{{post.title}}</a></li>
+						{% endfor %}
+					</ul>
+				{% endif %}
 			</aside>
-			
-			
 		</div> <!-- #main -->
 	</div> <!-- #main-container -->
 
@@ -52,14 +57,16 @@
 	</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+<script type="text/javascript" src="http://gplusapi.googlecode.com/files/widget0.js"></script>
 
-<script src="js/script.js"></script>
-<script>
+<script src="/js/script.js"></script>
+<script>/*
 	var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 	s.parentNode.insertBefore(g,s)}(document,'script'));
+	*/
 </script>
 
 </body>

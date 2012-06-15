@@ -1,10 +1,10 @@
 ---
 layout: base
 ---
-{%for post in posts limit:5%}
+{%for post in paginator.posts %}
 <article>
 	<header>
-		<h1>{{post.title}}</h1>
+		<a href="{{post.url}}"><h1>{{post.title}}</h1></a>
 	</header>
 	<section>
 		{{ post.content  }}

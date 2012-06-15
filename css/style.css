@@ -81,23 +81,20 @@ body{ font:16px/26px Helvetica, Helvetica Neue, Arial; }
 }
 
 /* ===================
-    ALL: Orange Theme
+    ALL: Lemon Theme
    =================== */
 
-#header-container{ border-bottom: 20px solid #e44d26; }
-#footer-container{ border-top:    20px solid #e44d26; }
-#main aside      { border-top:    20px solid #e44d26; }
+#header-container{ border-bottom: 20px solid #dfdfdf; }
+#footer-container{ border-top:    20px solid #dfdfdf; }
+#main aside      { border-top:    20px solid #dfdfdf; }
 
 #header-container,
 #footer-container,
 #main aside{
-	background:#f16529;
+	background:#ddd;
 }
 
-#title{ color:white; }
-
-::-moz-selection { background: #f16529; color: #fff; text-shadow: none; }
-::selection      { background: #f16529; color: #fff; text-shadow: none; }
+#title{ color:black; }
 
 /* ==============
     MOBILE: Menu
@@ -105,19 +102,19 @@ body{ font:16px/26px Helvetica, Helvetica Neue, Arial; }
 
 nav a{
 	display:block;
-	margin-bottom:10px;
+	margin-top:5px;
+	margin-bottom:5px;
 	padding:15px 0;
 
-	background:#e44d26;
+	background:#222222;
 	color:white;
 
 	text-align:center;
 	text-decoration:none;
 	font-weight:bold;
-}
-
-nav a:hover, nav a:visited{
-	color:white;
+	
+	border-radius:10px;
+	-moz-border-radius:10px; /* Firefox 3.6 and earlier */
 }
 
 nav a:hover{
@@ -142,7 +139,7 @@ nav a:hover{
 }
 
 #footer-container footer{
-	color:white;
+	color:black;
 	padding:20px 0;
 }
 
@@ -156,8 +153,12 @@ nav a:hover{
 /* ===== Primary Styles ========================================================
    Author:
    ========================================================================== */
-
-
+#main pre {
+	line-height: normal;
+}
+#main-container {
+	background-image: url(/img/clean_textile.png);
+}
 
 
 
@@ -180,7 +181,7 @@ nav a:hover{
 	nav a{
 		float:left;
 		width:27%;
-		margin:0 1.7%;
+		margin:1% 1.7% 1%;
 		padding:25px 2%;
 		margin-bottom:0;
 	}
