@@ -9,5 +9,15 @@ layout: base
 	<section>
 		{{ post.content  }}
 	</section>
+	{% if post.categories %}
+	<section class="categories">
+	<span class="category-heading">Posted in: </span>
+		<ul>
+			{% for cat in post.categories %}
+				<li><a href="/{{cat}}">{{cat}}</a></li>
+			{% endfor %}
+		</ul>
+	</section>
+	{% endif %}
 </article>
 {%endfor%}

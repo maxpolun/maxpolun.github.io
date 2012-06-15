@@ -9,4 +9,14 @@ layout: base
 	<section>
 		{{ content  }}
 	</section>
+	{% if page.categories %}
+	<section class="categories">
+	<span class="category-heading">Posted in: </span>
+		<ul>
+			{% for cat in page.categories %}
+				<li><a href="/{{cat}}">{{cat}}</a></li>
+			{% endfor %}
+		</ul>
+	</section>
+	{% endif %}
 </article>
