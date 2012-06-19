@@ -177,7 +177,18 @@ nav.pagination {
 .pagination .inactive {
 	color:#dddddd;
 }
-
+header a:visited {
+	color:#cfcfcf;
+}
+header a {
+	color:black;
+}
+nav a:visited {
+	color:#cfcfcf;
+}
+nav a {
+	color:white;
+}
 
 /* ==========================================================================
    Pure CSS tags (categories in this case)
