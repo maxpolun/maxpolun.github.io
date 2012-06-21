@@ -19,7 +19,7 @@ layout: base
 			{% for cat in post.categories %}
 				<li><a href="/{{cat}}">{{cat}}</a></li>
 			{% endfor %}
-		</ul>
+		</ul>  at {{post.date|date_to_string}}
 	</section>
 	{% endif %}
 </article>

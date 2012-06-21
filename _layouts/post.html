@@ -16,7 +16,7 @@ layout: base
 			{% for cat in page.categories %}
 				<li><a href="/{{cat}}">{{cat}}</a></li>
 			{% endfor %}
-		</ul>
+		</ul> at {{page.date|date_to_string}}
 	</section>
 	  <div id="disqus_thread"></div>
         <script type="text/javascript">
