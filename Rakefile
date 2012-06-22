@@ -13,6 +13,8 @@ category: #{args.category}
 ---
 EOS
     end
-    puts "Now open #{path} in an editor."
+    editor = "C:\\Program Files\\Sublime Text 2\\sublime_text.exe"
+    puts "opening #{path} in an editor."
+    system "'#{editor}'' #{path}"
 end
 
