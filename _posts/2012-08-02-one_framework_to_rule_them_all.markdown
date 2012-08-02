@@ -1,6 +1,6 @@
 ---
 layout: post
-title: One framework to rule them all: Are Meteor and Derby the future of web frameworks?
+title: One framework to rule them all&#58; Are Meteor and Derby the future of web frameworks?
 date: 2012-08-02  9:29:46
 category: nodejs
 ---

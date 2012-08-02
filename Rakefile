@@ -7,7 +7,7 @@ task :write, [:title, :category] do |t, args|
     file.write <<-EOS
 ---
 layout: post
-title: #{args.title}
+title: #{args.title.gsub(/:/, '&#58;')}
 date: #{Time.now.strftime('%Y-%m-%d %k:%M:%S')}
 category: #{args.category}
 ---
