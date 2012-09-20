@@ -29,15 +29,16 @@ is that doing this hard codes what you're going to do. Instead of calling new,
 you take all of the objects you need as parameters either to a function, or to
 your constructor for your object.
 
-Let's make this a bit more practical. If you were going to call some random API, the code you would use might be like:
-
+Let's make this a bit more practical. If you were going to call some random
+API, the code you would use might be like:
 
 {% highlight js%}
 // version 1, no DI
 function getUserPosts(username, postId) {
 	var request = http.request({
 		'host': 'api.randomsite.com',
-		'path': '/users/' + username + "/posts/" + postId
+		'path': '/users/' + username + 
+				'/posts/' + postId
 	},
 	function(response) {
 		response.on("data", function (chunk){
@@ -47,7 +48,6 @@ function getUserPosts(username, postId) {
 	request.end()
 }
 {% endhighlight %}
-
 
 A traditional dependency injection style (which largely comes from java) might do the following:
 
@@ -68,7 +68,8 @@ UserPostsGetter.prototype.get = function() {
 function getUserPosts(username, postId){
 	var requester = new Requester({
 		'host': 'api.randomsite.com',
-		'path': '/users/' + username + "/posts/" + postId
+		'path': '/users/' + username + 
+				'/posts/' + postId
 	})
 	var postAnalyzer = new PostAnalyzer()
 	var postGetter = new UserPostGetter(requester, postAnalyzer)
@@ -76,18 +77,17 @@ function getUserPosts(username, postId){
 }
 {% endhighlight %}
 
-
 However that's a bit heavyweight for javascript. The main thing you want to do
 with dependency injection is to not hard code your dependencies. A more
 functional style might be something like:
-
 
 {% highlight js%}
 // version 3, functional DI
 function getUserPosts(username, postId, requestFactory, callback) {
 	var request = requestFactory({
 		'host': 'api.randomsite.com',
-		'path': '/users/' + username + "/posts/" + postId
+		'path': '/users/' + username + 
+				'/posts/' + postId
 	},
 	function(response) {
 		response.on("data", function (chunk){
@@ -98,14 +98,19 @@ function getUserPosts(username, postId, requestFactory, callback) {
 }
 
 // in your main file:
-function getUserPostReal(username, postId) { // this isn't a very good name
-	getUserPosts(username, postId, http.request, analyzePost)
+function getUserPostReal(username, postId) { 
+	getUserPosts(username, 
+				 postId, 
+				 http.request, 
+				 analyzePost)
 }
 {% endhighlight %}
 
-
-So dependency injection adds some overhead, but the real benefit comes in testing. For version 1 above, you'd have to use nock or a similar tool to run tests without actually interacting with the service. For the others you might have to use mocks or fakes, but they can be very simple. For example a fake requestFactory for version 3 might be:
-
+So dependency injection adds some overhead, but the real benefit comes in
+testing. For version 1 above, you'd have to use nock or a similar tool to run
+tests without actually interacting with the service. For the others you might
+have to use mocks or fakes, but they can be very simple. For example a fake
+requestFactory for version 3 might be:
 
 {% highlight js%}
 function fakeRequestFactory(responseText) {
@@ -120,9 +125,12 @@ function fakeRequestFactory(responseText) {
 and the actual test would be something like:
 
 {% highlight js%}
-getUserPosts("testUser", "1", fakeRequestFactory("this is a test post"), function(responseText){
-	assert.equal(responseText, "this is a test post")
-})
+getUserPosts("testUser", 
+			 "1", 
+			 fakeRequestFactory("this is a test post"), 
+			 function(responseText){
+				assert.equal(responseText, "this is a test post")
+			 })
 {% endhighlight %}
 
 
