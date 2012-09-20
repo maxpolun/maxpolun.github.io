@@ -33,47 +33,47 @@ Let's make this a bit more practical. If you were going to call some random API,
 
 
 {% highlight js%}
-	// version 1, no DI
-	function getUserPosts(username, postId) {
-		var request = http.request({
-			'host': 'api.randomsite.com',
-			'path': '/users/' + username + "/posts/" + postId
-		},
-		function(response) {
-			response.on("data", function (chunk){
-				analyzePost(chunk)
-			})
-		});
-		request.end()
-	}
+// version 1, no DI
+function getUserPosts(username, postId) {
+	var request = http.request({
+		'host': 'api.randomsite.com',
+		'path': '/users/' + username + "/posts/" + postId
+	},
+	function(response) {
+		response.on("data", function (chunk){
+			analyzePost(chunk)
+		})
+	});
+	request.end()
+}
 {% endhighlight %}
 
 
 A traditional dependency injection style (which largely comes from java) might do the following:
 
 {% highlight js%}
-	// version 2, java-style DI
-	function UserPostsGetter(requester, postAnalyzer) {
-		this.requester = requester
-	}
-	UserPostsGetter.prototype.get = function() {
-		requester.request(function(response){
-			response.on("data", function(chunk){
-				postAnalyzer.analyze(chunk)
-			})
+// version 2, java-style DI
+function UserPostsGetter(requester, postAnalyzer) {
+	this.requester = requester
+}
+UserPostsGetter.prototype.get = function() {
+	requester.request(function(response){
+		response.on("data", function(chunk){
+			postAnalyzer.analyze(chunk)
 		})
-	}
+	})
+}
 
-	// in your main file:
-	function getUserPosts(username, postId){
-		var requester = new Requester({
-			'host': 'api.randomsite.com',
-			'path': '/users/' + username + "/posts/" + postId
-		})
-		var postAnalyzer = new PostAnalyzer()
-		var postGetter = new UserPostGetter(requester, postAnalyzer)
-		postGetter.get()
-	}
+// in your main file:
+function getUserPosts(username, postId){
+	var requester = new Requester({
+		'host': 'api.randomsite.com',
+		'path': '/users/' + username + "/posts/" + postId
+	})
+	var postAnalyzer = new PostAnalyzer()
+	var postGetter = new UserPostGetter(requester, postAnalyzer)
+	postGetter.get()
+}
 {% endhighlight %}
 
 
@@ -83,24 +83,24 @@ functional style might be something like:
 
 
 {% highlight js%}
-	// version 3, functional DI
-	function getUserPosts(username, postId, requestFactory, callback) {
-		var request = requestFactory({
-			'host': 'api.randomsite.com',
-			'path': '/users/' + username + "/posts/" + postId
-		},
-		function(response) {
-			response.on("data", function (chunk){
-				callback(chunk)
-			})
-		});
-		request.end()
-	}
+// version 3, functional DI
+function getUserPosts(username, postId, requestFactory, callback) {
+	var request = requestFactory({
+		'host': 'api.randomsite.com',
+		'path': '/users/' + username + "/posts/" + postId
+	},
+	function(response) {
+		response.on("data", function (chunk){
+			callback(chunk)
+		})
+	});
+	request.end()
+}
 
-	// in your main file:
-	function getUserPostReal(username, postId) { // this isn't a very good name
-		getUserPosts(username, postId, http.request, analyzePost)
-	}
+// in your main file:
+function getUserPostReal(username, postId) { // this isn't a very good name
+	getUserPosts(username, postId, http.request, analyzePost)
+}
 {% endhighlight %}
 
 
@@ -108,21 +108,21 @@ So dependency injection adds some overhead, but the real benefit comes in testin
 
 
 {% highlight js%}
-	function fakeRequestFactory(responseText) {
-		return function(notUsed, callback){
-			return {
-				end: function() {callback(responseText)}
-			}
+function fakeRequestFactory(responseText) {
+	return function(notUsed, callback){
+		return {
+			end: function() {callback(responseText)}
 		}
 	}
+}
 {% endhighlight %}
 
 and the actual test would be something like:
 
 {% highlight js%}
-	getUserPosts("testUser", "1", fakeRequestFactory("this is a test post"), function(responseText){
-		assert.equal(responseText, "this is a test post")
-	})
+getUserPosts("testUser", "1", fakeRequestFactory("this is a test post"), function(responseText){
+	assert.equal(responseText, "this is a test post")
+})
 {% endhighlight %}
 
 
