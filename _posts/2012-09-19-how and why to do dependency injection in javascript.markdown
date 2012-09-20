@@ -30,7 +30,8 @@ you take all of the objects you need as parameters either to a function, or to
 your constructor for your object.
 
 Let's make this a bit more practical. If you were going to call some random API, the code you would use might be like:
-~~~~
+
+
 {% highlight js%}
 // version 1, no DI
 function getUserPosts(username, postId) {
@@ -46,9 +47,10 @@ function getUserPosts(username, postId) {
 	request.end()
 }
 {% endhighlight %}
-~~~~
+
+
 A traditional dependency injection style (which largely comes from java) might do the following:
-~~~~
+
 {% highlight js%}
 // version 2, java-style DI
 function UserPostsGetter(requester, postAnalyzer) {
@@ -73,13 +75,13 @@ function getUserPosts(username, postId){
 	postGetter.get()
 }
 {% endhighlight %}
-~~~~
+
 
 However that's a bit heavyweight for javascript. The main thing you want to do
 with dependency injection is to not hard code your dependencies. A more
 functional style might be something like:
 
-~~~~
+
 {% highlight js%}
 // version 3, functional DI
 function getUserPosts(username, postId, requestFactory, callback) {
@@ -100,11 +102,11 @@ function getUserPostReal(username, postId) { // this isn't a very good name
 	getUserPosts(username, postId, http.request, analyzePost)
 }
 {% endhighlight %}
-~~~~
+
 
 So dependency injection adds some overhead, but the real benefit comes in testing. For version 1 above, you'd have to use nock or a similar tool to run tests without actually interacting with the service. For the others you might have to use mocks or fakes, but they can be very simple. For example a fake requestFactory for version 3 might be:
 
-~~~~
+
 {% highlight js%}
 function fakeRequestFactory(responseText) {
 	return function(notUsed, callback){
@@ -114,15 +116,15 @@ function fakeRequestFactory(responseText) {
 	}
 }
 {% endhighlight %}
-~~~~
+
 and the actual test would be something like:
-~~~~
+
 {% highlight js%}
 getUserPosts("testUser", "1", fakeRequestFactory("this is a test post"), function(responseText){
 	assert.equal(responseText, "this is a test post")
 })
 {% endhighlight %}
-~~~~
+
 
 So that's the basic idea behind dependency injection. In the Java world people
 use a lot of very powerful DI frameworks (like
