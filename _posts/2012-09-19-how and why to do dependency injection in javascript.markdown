@@ -38,7 +38,7 @@ function getUserPosts(username, postId) {
 	var request = http.request({
 		'host': 'api.randomsite.com',
 		'path': '/users/' + username + 
-				'/posts/' + postId
+                '/posts/' + postId
 	},
 	function(response) {
 		response.on("data", function (chunk){
@@ -69,7 +69,7 @@ function getUserPosts(username, postId){
 	var requester = new Requester({
 		'host': 'api.randomsite.com',
 		'path': '/users/' + username + 
-				'/posts/' + postId
+                '/posts/' + postId
 	})
 	var postAnalyzer = new PostAnalyzer()
 	var postGetter = new UserPostGetter(requester, postAnalyzer)
@@ -87,7 +87,7 @@ function getUserPosts(username, postId, requestFactory, callback) {
 	var request = requestFactory({
 		'host': 'api.randomsite.com',
 		'path': '/users/' + username + 
-				'/posts/' + postId
+                '/posts/' + postId
 	},
 	function(response) {
 		response.on("data", function (chunk){
@@ -100,9 +100,9 @@ function getUserPosts(username, postId, requestFactory, callback) {
 // in your main file:
 function getUserPostReal(username, postId) { 
 	getUserPosts(username, 
-				 postId, 
-				 http.request, 
-				 analyzePost)
+                 postId, 
+                 http.request, 
+                 analyzePost)
 }
 {% endhighlight %}
 
@@ -126,11 +126,11 @@ and the actual test would be something like:
 
 {% highlight js%}
 getUserPosts("testUser", 
-			 "1", 
-			 fakeRequestFactory("this is a test post"), 
-			 function(responseText){
-				assert.equal(responseText, "this is a test post")
-			 })
+             "1", 
+             fakeRequestFactory("this is a test post"), 
+             function(responseText){
+                assert.equal(responseText, "this is a test post")
+             })
 {% endhighlight %}
 
 
