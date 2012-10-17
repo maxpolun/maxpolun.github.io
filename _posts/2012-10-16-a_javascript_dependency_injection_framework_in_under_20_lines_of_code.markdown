@@ -84,3 +84,7 @@ TaskListView.inject = ["request", "response", "renderer", "tasks"]
 {% endhighlight %}
 
 That looks pretty clean, right? You could even use the sort of magic angular uses and get dependencies by the function input names.
+
+If you want to do this in production, I'd use a more battle tested framework, though. On the client side, I can't recommend [Angular](http://angularjs.org/) enough, however the server-side picture is much less clear. I've looked at a few modules, and I like [dough](https://npmjs.org/package/dough) the most. Look around npm, there are plenty of choices.
+
+Use some DI framework, though. It makes testing much easier and faster, which means you'll run your tests more often.
