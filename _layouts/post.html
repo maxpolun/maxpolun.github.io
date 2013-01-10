@@ -18,6 +18,10 @@ layout: base
 			{% endfor %}
 		</ul> at {{page.date|date_to_string}}
 	</section>
+	{% endif %}
+	<section>
+		By <a href="/about" rel="author">Max Polun</a>
+	</section>
 	  <div id="disqus_thread"></div>
         <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -33,5 +37,5 @@ layout: base
         <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         
-	{% endif %}
+
 </article>
