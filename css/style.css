@@ -234,7 +234,7 @@ nav a {
 	border-top-right-radius:4px;	
 } 
 
-.categories a:before{
+.categories a.cat:before{
 	content:"";
 	float:left;
 	position:absolute;
@@ -246,7 +246,7 @@ nav a {
 	border-style:solid;
 	border-width:12px 12px 12px 0;		
 }
-.categories a:after{
+.categories a.cat:after{
 	content:"";
 	position:absolute;
 	top:10px;
@@ -262,9 +262,9 @@ nav a {
 	-webkit-box-shadow:-1px -1px 2px #004977;
 	box-shadow:-1px -1px 2px #004977;
 }
-.categories a:hover{background:#555;}	
+.categories a.cat:hover{background:#555;}	
 
-.categories a:hover:before{border-color:transparent #555 transparent transparent;}
+.categories a.cat:hover:before{border-color:transparent #555 transparent transparent;}
 
 
 
