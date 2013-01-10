@@ -220,7 +220,8 @@ nav a {
 	font-size:11px;
 }
 .categories a.cat{
-	margin-left:20px;
+	margin-left:10px;
+	margin-right: 10px;
 	padding:0 10px 0 12px;
 	background:#0089e0;
 	color:#fff;
