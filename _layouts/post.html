@@ -9,18 +9,17 @@ layout: base
 	<section>
 		{{ content  }}
 	</section>
-	{% if page.categories %}
 	<section class="categories">
-	<span class="category-heading">Posted in: </span>
+	Posted in:
+	{% if page.categories %}
+	<span class="category-heading"> </span>
 		<ul>
 			{% for cat in page.categories %}
 				<li><a href="/{{cat}}">{{cat}}</a></li>
 			{% endfor %}
-		</ul> at {{page.date|date_to_string}}
-	</section>
+		</ul> 
 	{% endif %}
-	<section>
-		By <a href="/about" rel="author">Max Polun</a>
+		By <a href="/about/" rel="author">Max Polun</a> at {{page.date|date_to_string}}
 	</section>
 	  <div id="disqus_thread"></div>
         <script type="text/javascript">
