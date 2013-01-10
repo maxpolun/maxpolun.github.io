@@ -9,13 +9,13 @@ layout: base
 	<section>
 		{{ content  }}
 	</section>
-	<section class="categories">
 	Posted in:
 	{% if page.categories %}
+	<section class="categories">
 	<span class="category-heading"> </span>
 		<ul>
 			{% for cat in page.categories %}
-				<li><a href="/{{cat}}">{{cat}}</a></li>
+				<li><a class="cat" href="/{{cat}}">{{cat}}</a></li>
 			{% endfor %}
 		</ul> 
 	{% endif %}
