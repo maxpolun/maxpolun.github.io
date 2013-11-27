@@ -13,8 +13,8 @@ category: #{args.category}
 ---
 EOS
     end
-    editor = "C:\\Program Files\\Sublime Text 2\\sublime_text.exe"
+    editor = "subl"
     puts "opening #{path} in #{editor}."
-    system '"#{editor}" "#{path}"'
+    system '#{editor} #{path}'
 end
 
