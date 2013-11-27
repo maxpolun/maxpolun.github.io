@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>Audio Scope</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Audio Oscilloscope</h1>
+  <div id="fndisplay">
+    <h3>Function display</h3>
+    <canvas id="fnscope" width="500" height="200"></canvas>
+  </div>
+  <div id="timedisplay">
+    <h3>Time domain</h3>
+    <canvas id="timescope" width="700" height="300"></canvas>
+  </div>
+  <form id="form">
+    <select name="function" id="function">
+      <option value="sine">sin</option>
+      <option value="square">square</option>
+      <option value="triangle">triangle</option>
+      <option value="sawtooth">sawtooth</option>
+    </select><br>
+    <label><input type="text" id="f" value="440"> Hz</label><br>
+    <label>phase<input type="text" id="phase" value="0"> [-1 to 1]</label>
+  </form>
+  <form id="controls">
+    <button id="play">play</button>
+    <button id="stop">stop</button>
+  </form>
+  <script src="jquery-2.0.3.js"></script>
+  <script src="oscillator.js"></script>
+  <script src="scope.js"></script>
+  <script src="audio.js"></script>
+  <script src="view.js"></script>
+</body>
+</html>
