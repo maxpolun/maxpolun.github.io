@@ -1,5 +1,5 @@
 paginate: 10
-pygments: true
+highlighter: pygments
 url: http://maxpolun.com/
 name: maxpolun.com
 description: Max Polun's Blog
