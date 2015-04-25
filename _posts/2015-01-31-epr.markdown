@@ -1,0 +1,76 @@
+---
+layout: post
+title: "EPR: A utility for simplifying node paths"
+date: 2015-01-31 11:48:34
+category: node
+---
+
+So let's say you've got a node project, with a structure somewhat like this:
+
+```
+- project/
+  - package.json
+  - server.js
+  - lib/
+    - file1.js
+    - file2.js
+    - models/
+      - model1.js
+      - model2.js
+  - spec/
+    - file1Spec.js
+    - file2Spec.js
+    - models/
+      - model1Spec.js
+      - model2Spec.js
+```
+
+Your `require` statements in your specs can easily get very ugly:
+
+```js
+var model1 = require('../../lib/models/model1')
+```
+
+They're also fragile -- if you move either your spec file or your implementation file,
+you've got to update your requires. This is a good argument for using lots of small modules
+that can be broken out -- if a module lives in your `node_modules` folder then requireing it
+is always easy:
+
+```js
+var file1 = require('file1')
+```
+
+The problem is that when you're writing an app lots of the code can't really
+be seperated out  to tiny modules -- it's app-specific.  There have been [a
+few suggestions](https://github.com/substack/browserify-handbook#avoiding-)
+on how to address this problem, but [epr](https://www.npmjs.com/package/epr)
+is my attempt at  solving it in a nice, repeatable way.
+
+EPR works by making symlinks in your node_modules folder. It gets the list of symlinks to create
+from your package.json file. So for the above example, you could add the following to your package.json
+file:
+
+```json
+{
+  "epr": {
+    "file1": "lib/file1.js",
+    "file2": "lib/file2.js",
+    "models": "lib/models"
+  }
+}
+```
+You could have requires like the following:
+
+```js
+require('file1')
+require('file2')
+require('models/model1')
+require('models/model2')
+```
+
+no relative paths present, and you never need to update any requires -- you just need
+to update your package.json if you move one of your files.
+
+So check out epr, if you're using node and are annoyed by relative paths.
+
+
