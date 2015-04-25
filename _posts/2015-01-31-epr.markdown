@@ -7,7 +7,7 @@ category: node
 
 So let's say you've got a node project, with a structure somewhat like this:
 
-```
+<pre>
 - project/
   - package.json
   - server.js
@@ -23,22 +23,22 @@ So let's say you've got a node project, with a structure somewhat like this:
     - models/
       - model1Spec.js
       - model2Spec.js
-```
+</pre>
 
 Your `require` statements in your specs can easily get very ugly:
 
-```js
+{% highlight js linenos %}
 var model1 = require('../../lib/models/model1')
-```
+{% endhighlight %}
 
 They're also fragile -- if you move either your spec file or your implementation file,
 you've got to update your requires. This is a good argument for using lots of small modules
 that can be broken out -- if a module lives in your `node_modules` folder then requireing it
 is always easy:
 
-```js
+{% highlight js linenos %}
 var file1 = require('file1')
-```
+{% endhighlight %}
 
 The problem is that when you're writing an app lots of the code can't really
 be seperated out  to tiny modules -- it's app-specific.  There have been [a
@@ -50,7 +50,7 @@ EPR works by making symlinks in your node_modules folder. It gets the list of sy
 from your package.json file. So for the above example, you could add the following to your package.json
 file:
 
-```json
+{% highlight json linenos %}
 {
   "epr": {
     "file1": "lib/file1.js",
@@ -58,15 +58,15 @@ file:
     "models": "lib/models"
   }
 }
-```
+{% endhighlight %}
 You could have requires like the following:
 
-```js
+{% highlight js linenos %}
 require('file1')
 require('file2')
 require('models/model1')
 require('models/model2')
-```
+{% endhighlight %}
 
 no relative paths present, and you never need to update any requires -- you just need
 to update your package.json if you move one of your files.
