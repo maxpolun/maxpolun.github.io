@@ -4,7 +4,7 @@ layout: base
 {%for post in paginator.posts %}
 <article>
 	<header>
-		<a href="{{post.url}}"><h1>{{post.title}}</h1></a>
+		<h1><a href="{{post.url}}">{{post.title}}</a></h1>
 	</header>
 	<section>
 		{{ post.content  }}
