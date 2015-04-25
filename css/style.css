@@ -96,17 +96,11 @@ body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
 /* ==============
     MOBILE: Menu
    ============== */
+.topnav {
+  text-align: center;
+}
 
-nav a{
-	display:block;
-	margin-top:5px;
-	margin-bottom:5px;
-	padding:15px 0;
-
-	background:#222222 url(/img/txture.png);
-	color:white;
-
-	text-align:center;
+.topnav a{
 	text-decoration:none;
 	font-weight:bold;
 
@@ -114,7 +108,7 @@ nav a{
 	-moz-border-radius:10px; /* Firefox 3.6 and earlier */
 }
 
-nav a:hover {
+.topnav a:hover {
 	text-decoration:underline;
 }
 
@@ -123,7 +117,7 @@ nav a:hover {
    ============== */
 
 #main {
-	padding: 30px 0;
+	padding-top: 30px;
 }
 
 #main article h1 {
@@ -172,32 +166,33 @@ nav a:hover {
 #title {
 	font-size: 250%;
 }
+
 /* pagination links */
-nav.pagination {
+
+.pagination {
 	text-align: center;
-	float:none;
-	height:24px;
+	padding: 10px;
 }
+
 .next {
-	padding:0 10px 0 10px;
+	float: left;
 }
+
 .previous {
-	padding:0 10px 0 10px;
+	float: right;
 }
-.pagination .inactive {
-	color:#dddddd;
-}
+
 header a:visited {
 	color:#cfcfcf;
 }
 header a {
-	color:black;
+	color: #333;
 }
-nav a:visited {
-	color:#cfcfcf;
+.topnav a:visited {
+	color: #888;
 }
-nav a {
-	color:white;
+.topnav a {
+	color: #333;
 }
 
 /* ==========================================================================
@@ -288,29 +283,24 @@ nav a {
     INTERMEDIATE: Menu
    ==================== */
 
-	nav a{
-		float:left;
-		width:27%;
-		margin:1% 1.7% 1%;
-		padding:25px 2%;
-		margin-bottom:0;
-	}
+  .topnav {
+    float: right;
+  }
 
-	nav li:first-child a{ margin-left:0;  }
-	nav li:last-child  a{ margin-right:0; }
+  .topnav ul {
+    display: table;
+    height: 5em;
+  }
 
-/* ========================
-    INTERMEDIATE: IE Fixes
-   ======================== */
+  .topnav ul li {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 10px;
+  }
 
-	nav ul li{
-		display:inline;
-	}
-	.oldie nav a{
-		margin:0 0.7%;
-	}
-}
-
+  .topnav ul li a {
+    margin: 10px;
+  }
 @media only screen and (min-width: 768px) {
 
 /* ====================
@@ -332,17 +322,11 @@ nav a {
 		float:left;
 	}
 
-	nav{
-		float:right;
-		width:38%;
-	}
-
 /* ============
     WIDE: Main
    ============ */
 
 	#main article{
-		float:left;
 		width:57%;
 	}
 
@@ -350,6 +334,10 @@ nav a {
 		float:right;
 		width:28%;
 	}
+
+  .pagination {
+    width: 57%;
+  }
 }
 
 @media only screen and (min-width: 1140px) {
