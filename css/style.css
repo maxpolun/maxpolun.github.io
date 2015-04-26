@@ -72,9 +72,13 @@ td { vertical-align: top; }
 
 body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
 
-.wrapper{
+.wrapper {
 	width:90%;
 	margin:0 5%;
+}
+
+header {
+  text-align: center;
 }
 
 /* ===================
@@ -91,7 +95,7 @@ body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
 	background:#ddd url(/img/hexellence.png);
 }
 
-#title{ color:black; }
+#title a{ color:#333; }
 
 /* ==============
     MOBILE: Menu
@@ -115,6 +119,11 @@ body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
 /* ==============
     MOBILE: Main
    ============== */
+
+#header-container {
+  margin-top: -26px;
+  padding-top: 30px;
+}
 
 #main {
 	padding-top: 30px;
@@ -144,13 +153,6 @@ body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
 	padding: 20px 0;
 }
 
-/* ===============
-    ALL: IE Fixes
-   =============== */
-
-.ie7 #title{ padding-top:20px; }
-
-
 /* ===== Primary Styles ========================================================
    Author: Max Polun
    ========================================================================== */
@@ -160,9 +162,11 @@ body{ font:16px/26px 'Roboto', Helvetica, Helvetica Neue, Arial; }
   padding: 5px;
   border: 1px solid #ddd;
 }
+
 #main-container {
 	background-image: url(/img/clean_textile.png);
 }
+
 #title {
 	font-size: 250%;
 }
